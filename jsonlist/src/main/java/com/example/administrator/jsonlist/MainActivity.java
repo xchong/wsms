@@ -55,14 +55,16 @@ public class MainActivity extends Activity {
     public void JsonRequst(){
 
 
-        StringRequest jsonObjectRequest = new StringRequest("http://gc.ditu.aliyun.com/geocoding?a=%E8%8B%8F%E5%B7%9E%E5%B8%82",
+        StringRequest jsonObjectRequest = new StringRequest(WEATHER_LINK,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         Log.d("TAG", response.toString());
 
                         try{
-                            JSONObject jo = new JSONObject(response);
+                            JSONObject jo1 = new JSONObject(response);
+                            JSONObject jo=jo1.getJSONObject("weatherinfo");
+
                             Iterator<String> it =  jo.keys();
                             while (it.hasNext()){
 
